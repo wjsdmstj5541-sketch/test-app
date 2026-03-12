@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValYou - 나의 자산 가치</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">ValYou</h1>
+            <p class="tagline">나의 자산, 한눈에</p>
+        </header>
+
+        <!-- Total Value Card -->
+        <section class="total-card">
+            <p class="total-label">총 자산</p>
+            <h2 class="total-value" id="totalValue">₩0</h2>
+            <p class="total-change positive" id="totalChange">+₩0 (0%)</p>
+        </section>
+
+        <!-- Asset List -->
+        <section class="asset-section">
+            <div class="section-header">
+                <h3>보유 자산</h3>
+                <button class="add-btn" id="addAssetBtn">+ 추가</button>
+            </div>
+            <div class="asset-list" id="assetList">
+                <!-- Assets will be rendered here -->
+                <p class="empty-state">자산을 추가해 보세요</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Add Asset Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h3>자산 추가</h3>
+            <form id="assetForm">
+                <div class="form-group">
+                    <label>유형</label>
+                    <select id="assetType">
+                        <option value="stock">주식</option>
+                        <option value="crypto">암호화폐</option>
+                        <option value="cash">현금</option>
+                        <option value="realestate">부동산</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>이름</label>
+                    <input type="text" id="assetName" placeholder="예: 삼성전자, 비트코인" required>
+                </div>
+                <div class="form-group">
+                    <label>수량</label>
+                    <input type="number" id="assetQuantity" placeholder="0" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label>매수 단가 (₩)</label>
+                    <input type="number" id="assetPrice" placeholder="0" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">취소</button>
+                    <button type="submit" class="btn-submit">추가</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
