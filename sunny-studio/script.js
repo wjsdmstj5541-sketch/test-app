@@ -62,6 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTop.classList.remove('visible');
         }
 
+        // Mobile CTA bar - show after scrolling past hero
+        const mobileCTA = document.getElementById('mobileCTA');
+        if (mobileCTA) {
+            if (scrollY > 400) {
+                mobileCTA.classList.add('visible');
+            } else {
+                mobileCTA.classList.remove('visible');
+            }
+        }
+
         // Active nav link
         let current = '';
         sections.forEach(section => {
@@ -256,5 +266,109 @@ document.addEventListener('DOMContentLoaded', () => {
         const today = new Date().toISOString().split('T')[0];
         dateInput.setAttribute('min', today);
     }
+
+    // ========== Pricing Carousel (Swipe + Touch + Auto) ==========
+    document.querySelectorAll('.pricing-carousel').forEach(carousel => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        let currentIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+        let autoPlayTimer = null;
+
+        function goToSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = (index + slides.length) % slides.length;
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        // Auto-play
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayTimer = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayTimer) {
+                clearInterval(autoPlayTimer);
+                autoPlayTimer = null;
+            }
+        }
+
+        // Dot click
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(i);
+                startAutoPlay();
+            });
+        });
+
+        // Touch events
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            stopAutoPlay();
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+            startAutoPlay();
+        }, { passive: true });
+
+        // Mouse drag events
+        carousel.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            stopAutoPlay();
+            e.preventDefault();
+        });
+
+        carousel.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            const diff = startX - e.clientX;
+
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+            startAutoPlay();
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                startAutoPlay();
+            }
+        });
+
+        // Start auto-play
+        startAutoPlay();
+    });
 
 });
