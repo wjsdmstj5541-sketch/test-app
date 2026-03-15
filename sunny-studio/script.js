@@ -14,47 +14,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== Preloader Typing Effect ==========
-    const typingText = document.getElementById('typingText');
-    const textToType = "SUNNY STUDIO";
-    let index = 0;
-
-    function typeEffect() {
-        if (index < textToType.length) {
-            typingText.textContent += textToType.charAt(index);
-            index++;
-            setTimeout(typeEffect, 120 + Math.random() * 50);
-        } else {
-            // Typing finished - Start sophisticated transition
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                const content = preloader.querySelector('.preloader-content');
-                const flash = preloader.querySelector('.shutter-flash');
-                const hero = document.getElementById('hero');
-
-                // 1. Fade out the text content first
-                content.classList.add('fade-out');
-
-                setTimeout(() => {
-                    // 2. Trigger photographic shutter flash
-                    flash.classList.add('active');
-
-                    // 3. Simultaneously slide preloader and reveal hero
-                    setTimeout(() => {
-                        preloader.classList.add('loaded');
-                        if (hero) hero.classList.add('reveal');
-
-                        // 4. Remove from DOM after all animations finish
-                        setTimeout(() => preloader.remove(), 1200);
-                    }, 150); // Small delay to sync with flash peak
-                }, 400);
-            }, 800);
-        }
-    }
-
-    // Start typing after a short initial delay
+    // ========== Preloader (Logo Fade + Scale) ==========
     window.addEventListener('load', () => {
-        setTimeout(typeEffect, 500);
+        const preloader = document.getElementById('preloader');
+        const logo = preloader.querySelector('.preloader-logo');
+        const hero = document.getElementById('hero');
+
+        // Logo is already fading in via CSS animation (0.2s delay + 0.8s duration = visible at 1s)
+        // After 1.2s total, start zoom-out and fade (overlapping for smooth transition)
+        setTimeout(() => {
+            logo.classList.add('zoom-out');
+
+            // Start fade-out early so it overlaps with the zoom-out
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                if (hero) hero.classList.add('reveal');
+
+                // Remove preloader from DOM after fade completes
+                setTimeout(() => preloader.remove(), 1000);
+            }, 200);
+        }, 1200);
     });
 
     // ========== Hero Logic ==========
