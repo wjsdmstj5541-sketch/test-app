@@ -238,28 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // escape key logic from earlier script...
 
-    // ========== Full Price List Toggle ==========
-    const viewPriceBtn = document.getElementById('viewPriceBtn');
-    const closePriceBtn = document.getElementById('closePriceBtn');
-    const fullPriceList = document.getElementById('fullPriceList');
-
-    if (viewPriceBtn && fullPriceList) {
-        viewPriceBtn.addEventListener('click', () => {
-            fullPriceList.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        const closeFullList = () => {
-            fullPriceList.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-
-        if (closePriceBtn) closePriceBtn.addEventListener('click', closeFullList);
-
-        // Close on clicking outside content could be added if needed
-        // but close button is clear.
-    }
-
     // ========== Set minimum date to today ==========
     const dateInput = document.getElementById('date');
     if (dateInput) {
