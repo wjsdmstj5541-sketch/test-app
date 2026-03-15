@@ -1394,116 +1394,152 @@ p {
 
 /* --- Footer --- */
 #footer {
-    padding: 100px 0 60px;
-    background: #171717;
+    background: #111;
     color: white;
+    padding: 100px 0 40px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-#footer .logo-text {
-    color: white;
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 80px;
 }
 
-.footer-top {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
-    gap: 60px;
-    margin-bottom: 80px;
-}
-
-.footer-brand p {
-    font-size: 1rem;
-    color: #999;
+.footer-brand {
     max-width: 300px;
 }
 
-.footer-links h5 {
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.8;
+}
+
+.footer-nav-groups {
+    display: flex;
+    gap: 80px;
+}
+
+.footer-group h6 {
     font-size: 0.8rem;
     font-weight: 600;
-    color: white;
-    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 25px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.1em;
 }
 
-.footer-links a,
-.footer-links p {
+.footer-group a,
+.footer-group li {
     display: block;
-    font-size: 0.85rem;
-    margin-bottom: 10px;
-    transition: var(--transition-base);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+    list-style: none;
 }
 
-.footer-links a:hover {
-    color: #999;
-    padding-left: 4px;
+.footer-group a:hover {
+    color: white;
 }
 
-.footer-bottom {
-    padding: 32px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+.social-icon-link {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 16px;
-    text-align: center;
+    gap: 10px;
 }
 
-.business-info-text {
+.footer-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    width: 100%;
+}
+
+.footer-meta {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.business-info {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 20px;
-    color: rgba(255, 255, 255, 0.3);
+    gap: 0 15px;
+    color: rgba(255, 255, 255, 0.25);
     font-size: 0.7rem;
 }
 
-.instagram-link {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    margin-top: 8px;
-}
-
-.instagram-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    color: rgba(255, 255, 255, 0.6);
-    transition: var(--transition-base);
-}
-
-.instagram-link:hover .instagram-icon {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.instagram-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.instagram-link small {
-    font-size: 0.65rem;
+.business-info b {
     color: rgba(255, 255, 255, 0.4);
-    margin-top: 0;
+    margin-right: 4px;
+    font-weight: 400;
 }
 
-.instagram-link:hover {
-    padding-left: 0 !important;
-    /* Override the default footer link padding-left on hover */
+.business-info .divider {
+    color: rgba(255, 255, 255, 0.1);
 }
 
-.footer-bottom p {
+.footer-copyright {
     color: rgba(255, 255, 255, 0.2);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    text-align: right;
+}
+
+/* Footer Responsive */
+@media (max-width: 992px) {
+    .footer-main {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .footer-nav-groups {
+        gap: 60px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    #footer {
+        padding: 60px 0 140px;
+    }
+
+    .footer-nav-groups {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-meta {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .business-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .business-info .divider {
+        display: none;
+    }
+
+    .footer-copyright {
+        text-align: left;
+    }
 }
 
 /* --- Mobile Fixed CTA Bar --- */
