@@ -1797,23 +1797,30 @@ p {
 
 @media (max-width: 768px) {
     .portfolio-pinterest-grid {
-        column-count: 2;
-        gap: 12px;
+        column-count: 2 !important;
+        column-gap: 10px !important;
     }
 
     .portfolio-item {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
+        border-radius: 8px;
     }
 }
 
 @media (max-width: 480px) {
     .portfolio-pinterest-grid {
-        column-count: 2;
-        column-gap: 8px;
+        column-count: 2 !important;
+        column-gap: 6px !important;
     }
 
     .portfolio-item {
-        margin-bottom: 8px;
+        margin-bottom: 6px;
+        border-radius: 6px;
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: auto;
     }
 }
 
