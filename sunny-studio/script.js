@@ -267,14 +267,13 @@ document.addEventListener('DOMContentLoaded', () => {
         dateInput.setAttribute('min', today);
     }
 
-    // ========== Pricing Carousel (Swipe + Touch + Auto) ==========
+    // ========== Pricing Carousel (Swipe + Touch) ==========
     document.querySelectorAll('.pricing-carousel').forEach(carousel => {
         const slides = carousel.querySelectorAll('.carousel-slide');
         const dots = carousel.querySelectorAll('.carousel-dot');
         let currentIndex = 0;
         let startX = 0;
         let isDragging = false;
-        let autoPlayTimer = null;
 
         function goToSlide(index) {
             slides[currentIndex].classList.remove('active');
@@ -292,25 +291,11 @@ document.addEventListener('DOMContentLoaded', () => {
             goToSlide(currentIndex - 1);
         }
 
-        // Auto-play
-        function startAutoPlay() {
-            stopAutoPlay();
-            autoPlayTimer = setInterval(nextSlide, 5000);
-        }
-
-        function stopAutoPlay() {
-            if (autoPlayTimer) {
-                clearInterval(autoPlayTimer);
-                autoPlayTimer = null;
-            }
-        }
-
         // Dot click
         dots.forEach((dot, i) => {
             dot.addEventListener('click', (e) => {
                 e.stopPropagation();
                 goToSlide(i);
-                startAutoPlay();
             });
         });
 
@@ -318,7 +303,6 @@ document.addEventListener('DOMContentLoaded', () => {
         carousel.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
             isDragging = true;
-            stopAutoPlay();
         }, { passive: true });
 
         carousel.addEventListener('touchend', (e) => {
@@ -334,14 +318,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     prevSlide();
                 }
             }
-            startAutoPlay();
         }, { passive: true });
 
         // Mouse drag events
         carousel.addEventListener('mousedown', (e) => {
             startX = e.clientX;
             isDragging = true;
-            stopAutoPlay();
             e.preventDefault();
         });
 
@@ -357,18 +339,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     prevSlide();
                 }
             }
-            startAutoPlay();
         });
 
         carousel.addEventListener('mouseleave', () => {
             if (isDragging) {
                 isDragging = false;
-                startAutoPlay();
             }
         });
-
-        // Start auto-play
-        startAutoPlay();
     });
 
 });
