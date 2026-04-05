@@ -577,12 +577,12 @@ p {
     }
 
     .hero-visual {
-        height: 50vh;
+        height: 65vh;
         order: 1;
     }
 
     .image-overlay {
-        background: linear-gradient(0deg, white 0%, transparent 20%);
+        background: linear-gradient(0deg, white 0%, transparent 40%);
     }
 
     .hero-floating-tag {
@@ -606,7 +606,7 @@ p {
     }
 
     .hero-visual {
-        height: 45vh;
+        height: 60vh;
     }
 
     .hero-actions {
