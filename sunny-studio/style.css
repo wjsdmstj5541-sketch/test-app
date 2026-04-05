@@ -528,6 +528,7 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 15%; /* Shift focus closer to the top to prevent face cutoff */
     animation: heroImageReveal 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
