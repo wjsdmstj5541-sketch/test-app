@@ -577,7 +577,8 @@ p {
     }
 
     .hero-visual {
-        height: 65vh;
+        height: auto;
+        aspect-ratio: 3 / 4; /* Maintains standard portrait proportions, minimizing crop */
         order: 1;
     }
 
@@ -606,7 +607,9 @@ p {
     }
 
     .hero-visual {
-        height: 60vh;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        width: 100%;
     }
 
     .hero-actions {
