@@ -582,7 +582,7 @@ p {
     }
 
     .image-overlay {
-        background: linear-gradient(0deg, white 0%, transparent 40%);
+        background: linear-gradient(0deg, white 0%, transparent 20%);
     }
 
     .hero-floating-tag {
