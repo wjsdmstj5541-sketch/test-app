@@ -253,12 +253,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let startX = 0;
         let isDragging = false;
 
+        // Skip carousel functionality if there's only 1 slide
+        if (slides.length <= 1) return;
+
         function goToSlide(index) {
             slides[currentIndex].classList.remove('active');
-            dots[currentIndex].classList.remove('active');
+            if (dots.length > 0) dots[currentIndex].classList.remove('active');
             currentIndex = (index + slides.length) % slides.length;
             slides[currentIndex].classList.add('active');
-            dots[currentIndex].classList.add('active');
+            if (dots.length > 0) dots[currentIndex].classList.add('active');
         }
 
         function nextSlide() {
