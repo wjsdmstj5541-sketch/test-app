@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business | Sunny Studio</title>
+    <meta name="description" content="Sunny Studio 기업 촬영 안내 - 계약, 진행 방식, 촬영 범위, 비용, 저작권 관련 자주 묻는 질문">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base Reset --- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF8F5;
+            --cream-dark: #E8E5DF;
+            --charcoal: #1A1A18;
+            --charcoal-light: #2A2A27;
+            --gold: #C4A882;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--charcoal);
+            background-color: var(--cream);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- Navigation --- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            letter-spacing: 1px;
+        }
+
+        .nav-back {
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            opacity: 0.5;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        .nav-back svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* --- Hero --- */
+        .page-hero {
+            padding: 160px 24px 80px;
+            text-align: center;
+        }
+
+        .page-hero-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.4em;
+            color: var(--gold);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .page-hero h1 {
+            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            font-weight: 500;
+            color: var(--charcoal);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        .page-hero h1 em {
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .page-hero-desc {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            opacity: 0.5;
+            font-weight: 300;
+        }
+
+        /* --- FAQ Content --- */
+        .faq-container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px 120px;
+        }
+
+        /* --- Category --- */
+        .faq-category {
+            margin-bottom: 60px;
+        }
+
+        .faq-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            letter-spacing: -0.01em;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--cream-dark);
+            margin-bottom: 0;
+        }
+
+        /* --- Accordion --- */
+        .faq-item {
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            text-align: left;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+            gap: 16px;
+        }
+
+        .faq-question:hover {
+            color: var(--gold);
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--charcoal);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-icon::before {
+            top: 50%;
+            left: 4px;
+            right: 4px;
+            height: 1px;
+            transform: translateY(-50%);
+        }
+
+        .faq-icon::after {
+            left: 50%;
+            top: 4px;
+            bottom: 4px;
+            width: 1px;
+            transform: translateX(-50%);
+        }
+
+        .faq-item.active .faq-icon::after {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--gold);
+        }
+
+        .faq-item.active .faq-icon::before {
+            background: var(--gold);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-answer-inner {
+            padding: 0 0 24px 0;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.6;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* --- Footer --- */
+        .page-footer {
+            background: var(--charcoal);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .page-footer a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--cream);
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .page-footer a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        .page-footer p {
+            margin-top: 16px;
+            font-size: 0.7rem;
+            color: rgba(250, 248, 245, 0.2);
+        }
+
+        /* --- Animation --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 130px 20px 60px;
+            }
+
+            .faq-container {
+                padding: 0 20px 80px;
+            }
+
+            .faq-question {
+                font-size: 0.9rem;
+                padding: 18px 0;
+            }
+
+            .faq-category-title {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">Sunny Studio</a>
+            <a href="index.html" class="nav-back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                홈으로
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <span class="page-hero-tag">BUSINESS</span>
+        <h1>자주 묻는 <em>질문</em></h1>
+        <p class="page-hero-desc">기업 촬영에 대해 궁금한 점을 확인해 보세요.</p>
+    </section>
+
+    <!-- FAQ -->
+    <div class="faq-container">
+
+        <!-- 계약 & 진행 방식 -->
+        <div class="faq-category fade-in">
+            <h2 class="faq-category-title">계약 & 진행 방식</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>견적은 어떻게 받을 수 있나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">전화 또는 이메일로 촬영 목적, 인원, 희망 일자를 알려주시면 맞춤 견적을 안내해 드립니다. 보통 1영업일 이내에 회신드리고 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>계약서 작성 및 진행 절차가 어떻게 되나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">견적 확인 → 계약서 작성(전자계약) → 촬영 일정 확정 → 촬영 당일 진행 → 보정 작업 → 결과물 납품 순서로 진행됩니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>촬영 일정은 얼마나 미리 잡아야 하나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">최소 2주 전 예약을 권장드리며, 성수기(3–5월, 9–11월)에는 한 달 이상 전에 문의해 주시는 것이 좋습니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>당일 취소 또는 일정 변경 시 어떻게 되나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">촬영 3일 전까지 무료 변경이 가능합니다. 당일 취소 시에는 촬영비의 50%가 위약금으로 발생할 수 있으니, 가급적 사전에 연락 부탁드립니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 촬영 범위 & 결과물 -->
+        <div class="faq-category fade-in">
+            <h2 class="faq-category-title">촬영 범위 & 결과물</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>단체 촬영(임직원 프로필)도 가능한가요? 인원 제한이 있나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">네, 가능합니다. 인원 제한은 없으며, 대규모 촬영의 경우 일정과 세팅을 조율하여 효율적으로 진행합니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>촬영 후 결과물 납품까지 얼마나 걸리나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">일반적으로 촬영 후 5~7영업일 이내에 납품됩니다. 급한 경우 빠른 납품도 가능하니 사전에 말씀해 주세요.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>원본 파일도 제공되나요, 보정본만 제공되나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">기본 패키지에는 보정본만 포함되어 있습니다. 원본 파일이 필요하신 경우 별도 협의가 가능합니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>파일 포맷과 해상도는 어떻게 되나요? (인쇄용/웹용 구분)</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">웹용(72dpi, JPEG)과 인쇄용(300dpi, TIFF/JPEG) 모두 제공 가능합니다. 용도를 말씀해 주시면 맞춤 포맷으로 납품해 드립니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>결과물 수정 요청은 몇 회까지 가능한가요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">기본 1회 수정이 포함되어 있으며, 추가 수정은 건당 별도 비용이 발생할 수 있습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 장소 & 장비 -->
+        <div class="faq-category fade-in">
+            <h2 class="faq-category-title">장소 & 장비</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>스튜디오 방문 촬영인가요, 출장 촬영도 가능한가요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">둘 다 가능합니다. 스튜디오 방문 촬영은 물론, 사무실이나 원하시는 장소로 출장 촬영도 진행하고 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>출장 촬영 시 추가 비용이 발생하나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">서울 및 수도권 지역은 출장비가 포함되어 있으며, 그 외 지역은 거리에 따라 교통비가 추가될 수 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>사무실이나 특정 공간을 배경으로 촬영할 수 있나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">네, 가능합니다. 사전에 공간 사진을 보내주시면 최적의 촬영 구도와 조명을 미리 계획해 드립니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 비용 & 정산 -->
+        <div class="faq-category fade-in">
+            <h2 class="faq-category-title">비용 & 정산</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>기업 세금계산서 발행이 가능한가요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">네, 세금계산서 발행 가능합니다. 사업자등록번호와 담당자 정보를 전달해 주시면 됩니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>결제 방식은 어떻게 되나요? (선불/후불/분할)</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">계약 시 50% 선금, 납품 완료 후 50% 잔금이 기본이며, 기업 사정에 따라 후불 또는 분할 결제도 협의 가능합니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>정기 계약 시 할인이 있나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">네, 분기별 또는 연간 정기 계약 시 촬영 건당 할인 혜택을 제공하고 있습니다. 자세한 사항은 별도 문의 바랍니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 저작권 & 사용권 -->
+        <div class="faq-category fade-in">
+            <h2 class="faq-category-title">저작권 & 사용권</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>촬영된 사진의 저작권은 누구에게 있나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">촬영물의 저작권은 Sunny Studio에 있으나, 계약 범위 내에서 자유롭게 사용하실 수 있도록 사용권을 부여합니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>회사 홈페이지, SNS, 인쇄물 등 상업적으로 사용할 수 있나요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">네, 기업 촬영 계약에는 홈페이지, SNS, 사내 인쇄물 등 일반적인 상업적 사용이 포함되어 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>사진을 외부 매체(광고, 언론)에 사용할 경우 별도 계약이 필요한가요?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">외부 광고, 언론 매체 등 대외적 사용 시에는 별도 라이선스 계약이 필요합니다. 사전에 사용 범위를 말씀해 주시면 맞춤 안내를 드립니다.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <a href="index.html">Sunny Studio</a>
+        <p>© 2026 Sunny Studio. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // --- Accordion ---
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isActive = item.classList.contains('active');
+
+                // Close all in same category
+                item.closest('.faq-category').querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                // Open clicked if wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // --- Fade-in on scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
