@@ -108,6 +108,7 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -126,6 +127,7 @@ h2 {
 }
 
 h2 em {
+    font-style: italic;
     font-weight: 300;
     color: var(--charcoal);
     opacity: 0.8;
@@ -184,6 +186,7 @@ p {
 }
 
 .preloader-logo-text {
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 6vw, 3rem);
     font-weight: 300;
     color: white;
@@ -245,6 +248,7 @@ p {
 }
 
 .logo-text {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--charcoal);
@@ -366,6 +370,7 @@ p {
     align-items: center;
     gap: 8px;
     padding: 14px 32px;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 0.95rem;
     font-weight: 500;
     border-radius: var(--radius-full);
@@ -453,6 +458,8 @@ p {
 }
 
 .hero-serif {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
     color: var(--gold);
 }
 
@@ -845,6 +852,8 @@ p {
     position: absolute;
     top: 20px;
     left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
     color: var(--cream);
     font-size: 1.5rem;
     opacity: 0.8;
@@ -856,6 +865,7 @@ p {
 }
 
 .pricing-info h3 {
+    font-family: 'Playfair Display', serif;
     font-size: 1.25rem;
     color: var(--charcoal);
     margin-bottom: 12px;
@@ -881,6 +891,7 @@ p {
 }
 
 .price {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--charcoal);
@@ -1017,6 +1028,8 @@ p {
     line-height: 1.9;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 32px;
+    font-style: italic;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .review-author {
@@ -1038,6 +1051,7 @@ p {
 }
 
 .review-author h5 {
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: white;
@@ -1158,6 +1172,7 @@ p {
 }
 
 .contact-item h5 {
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--warm-800);
@@ -1246,6 +1261,7 @@ p {
     background: var(--warm-50);
     border: 1.5px solid var(--warm-200);
     border-radius: var(--radius-sm);
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 0.9rem;
     color: var(--warm-800);
     transition: var(--transition-base);
@@ -1283,6 +1299,7 @@ p {
     background: var(--charcoal);
     color: var(--cream);
     padding: 100px 0 40px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .footer-main {
@@ -1297,6 +1314,7 @@ p {
 }
 
 .footer-logo {
+    font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--cream);
@@ -1462,6 +1480,7 @@ p {
     gap: 8px;
     padding: 14px 0;
     border-radius: 12px;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
@@ -1633,7 +1652,8 @@ p {
         color: var(--charcoal) !important;
         opacity: 1 !important;
         font-size: 1.15rem;
-            font-weight: 400;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
         letter-spacing: 0.05em;
     }
 
