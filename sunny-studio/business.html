@@ -9,93 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* --- Base Reset --- */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --cream: #FAF8F5;
-            --cream-dark: #E8E5DF;
-            --charcoal: #1A1A18;
-            --charcoal-light: #2A2A27;
-            --gold: #C4A882;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--charcoal);
-            background-color: var(--cream);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* --- Navigation --- */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 20px 0;
-            background: rgba(250, 248, 245, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--cream-dark);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--charcoal);
-            letter-spacing: 1px;
-        }
-
-        .nav-back {
-            font-size: 0.85rem;
-            color: var(--charcoal);
-            opacity: 0.5;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-back:hover {
-            opacity: 1;
-            color: var(--gold);
-        }
-
-        .nav-back svg {
-            width: 16px;
-            height: 16px;
-        }
-
         /* --- Hero --- */
         .page-hero {
             padding: 160px 24px 80px;
@@ -251,32 +166,6 @@
             font-weight: 300;
         }
 
-        /* --- Footer --- */
-        .page-footer {
-            background: var(--charcoal);
-            padding: 40px 24px;
-            text-align: center;
-        }
-
-        .page-footer a {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: var(--cream);
-            opacity: 0.4;
-            transition: opacity 0.3s ease;
-        }
-
-        .page-footer a:hover {
-            opacity: 1;
-            color: var(--gold);
-        }
-
-        .page-footer p {
-            margin-top: 16px;
-            font-size: 0.7rem;
-            color: rgba(250, 248, 245, 0.2);
-        }
-
         /* --- Animation --- */
         .fade-in {
             opacity: 0;
@@ -314,15 +203,22 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo">Sunny Studio</a>
-            <a href="index.html" class="nav-back">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                홈으로
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html#hero" class="nav-logo">
+                <span class="logo-text">Sunny Studio</span>
             </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#hero" class="nav-link">홈</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">포트폴리오</a></li>
+                <li><a href="index.html#pricing" class="nav-link">패키지</a></li>
+                <li><a href="index.html#branches" class="nav-link">지점안내&예약</a></li>
+                <li><a href="business.html" class="nav-link active">비즈니스 FAQ</a></li>
+            </ul>
+
+            <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -544,9 +440,56 @@
     </div>
 
     <!-- Footer -->
-    <footer class="page-footer">
-        <a href="index.html">Sunny Studio</a>
-        <p>© 2026 Sunny Studio. All Rights Reserved.</p>
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html#hero" class="footer-logo">Sunny Studio</a>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="footer-group">
+                        <h6>Navigation</h6>
+                        <a href="index.html#portfolio">Portfolio</a>
+                        <a href="index.html#pricing">Packages</a>
+                        <li><a href="index.html#branches">Branches</a></li>
+                    </div>
+                    <div class="footer-group">
+                        <h6>Connect</h6>
+                        <a href="tel:010-2513-5927">010-2513-5927</a>
+                        <a href="mailto:sunnystudio23@naver.com">sunnystudio23@naver.com</a>
+                    </div>
+                    <div class="footer-group social-group">
+                        <h6>Social</h6>
+                        <a href="https://www.instagram.com/sunnystudio23/" target="_blank" class="social-icon-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                            <span>@sunnystudio23</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-meta">
+                <div class="business-info">
+                    <span><b>상호명</b> 써니사진관</span>
+                    <span class="divider">|</span>
+                    <span><b>공동대표</b> 조은선, 신동호</span>
+                    <span class="divider">|</span>
+                    <span><b>사업자등록번호</b> 818-11-01105</span>
+                    <span class="divider">|</span>
+                    <span><b>주소</b> 서울시 강남구 일원로 3길 16, 1층</span>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2026 Sunny Studio. All Rights Reserved.<br>Site design & development by Jeon Eunseo</p>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -582,6 +525,7 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
