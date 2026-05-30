@@ -14,27 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== Preloader (Logo Fade + Scale) ==========
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        const logo = preloader.querySelector('.preloader-logo');
-        const hero = document.getElementById('hero');
-
-        // Logo is already fading in via CSS animation (0.2s delay + 0.8s duration = visible at 1s)
-        // After 1.2s total, start zoom-out and fade (overlapping for smooth transition)
-        setTimeout(() => {
-            logo.classList.add('zoom-out');
-
-            // Start fade-out early so it overlaps with the zoom-out
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
-                if (hero) hero.classList.add('reveal');
-
-                // Remove preloader from DOM after fade completes
-                setTimeout(() => preloader.remove(), 1000);
-            }, 200);
-        }, 1200);
-    });
 
     // ========== Hero Logic ==========
     // Hero elements are now handled by CSS and AOS.

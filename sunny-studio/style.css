@@ -157,55 +157,7 @@ p {
     opacity: 1;
 }
 
-/* --- Preloader (Minimal Logo Fade) --- */
-#preloader {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background: var(--charcoal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-#preloader.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.preloader-logo {
-    text-align: center;
-    opacity: 0;
-    transform: scale(0.95);
-    animation: logoReveal 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s forwards;
-}
-
-.preloader-logo.zoom-out {
-    animation: logoZoomOut 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.preloader-logo-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 6vw, 3rem);
-    font-weight: 300;
-    color: white;
-    letter-spacing: 6px;
-}
-
-@keyframes logoReveal {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes logoZoomOut {
-    to {
-        opacity: 0;
-        transform: scale(1.15);
-    }
-}
 
 /* --- Navigation --- */
 #navbar {
@@ -430,14 +382,9 @@ p {
     padding: 0;
     background: var(--cream);
     overflow: hidden;
-    opacity: 0;
-    transform: scale(1.05);
-    transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.hero-split.reveal {
     opacity: 1;
     transform: scale(1);
+    transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .hero-content {
