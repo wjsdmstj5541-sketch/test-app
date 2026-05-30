@@ -1569,6 +1569,42 @@ p {
 
 
 
+/* --- Floating Phone Button --- */
+.floating-phone-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 56px;
+    height: 56px;
+    background: var(--gold);
+    color: var(--charcoal);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(196, 168, 130, 0.4);
+    transition: var(--transition-base);
+    z-index: 999;
+}
+
+.floating-phone-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(196, 168, 130, 0.6);
+    background: var(--charcoal);
+    color: var(--gold);
+}
+
+@media (max-width: 768px) {
+    .floating-phone-btn {
+        bottom: 20px;
+        left: 20px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
 /* --- Form Success Toast --- */
 .toast {
     position: fixed;
