@@ -1768,8 +1768,9 @@ p {
 }
 
 .portfolio-pinterest-grid {
-    column-count: 3;
-    column-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .portfolio-item {
@@ -1778,17 +1779,14 @@ p {
     overflow: hidden;
     cursor: pointer;
     background: var(--charcoal-light);
-    margin-bottom: 20px;
-    /* Gap between items in columns */
-    break-inside: avoid;
-    /* Prevent card from breaking between columns */
 }
 
 .portfolio-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    aspect-ratio: 4 / 5;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
     transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -1805,36 +1803,34 @@ p {
 
 @media (max-width: 1024px) {
     .portfolio-pinterest-grid {
-        column-count: 2;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
     .portfolio-pinterest-grid {
-        column-count: 2 !important;
-        column-gap: 10px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
     }
 
     .portfolio-item {
-        margin-bottom: 10px;
         border-radius: 8px;
     }
 }
 
 @media (max-width: 480px) {
     .portfolio-pinterest-grid {
-        column-count: 2 !important;
-        column-gap: 6px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
     }
 
     .portfolio-item {
-        margin-bottom: 6px;
         border-radius: 6px;
     }
 
     .portfolio-item img {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 }
 
