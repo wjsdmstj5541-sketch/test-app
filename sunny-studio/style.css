@@ -885,6 +885,7 @@ p {
     padding: 30px;
     background: var(--cream);
     border: 1px solid var(--cream-dark);
+    grid-column: 1 / -1;
 }
 
 .pricing-notice {
@@ -892,16 +893,18 @@ p {
     color: var(--charcoal);
     letter-spacing: -0.01em;
     font-weight: 400;
+    white-space: nowrap;
+    word-break: keep-all;
 }
 
 @media (max-width: 576px) {
     .pricing-notice-container {
         margin-top: 50px;
-        padding: 20px;
+        padding: 20px 10px;
     }
 
     .pricing-notice {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 }
 
