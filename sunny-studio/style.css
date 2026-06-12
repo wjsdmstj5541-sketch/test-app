@@ -676,7 +676,7 @@ p {
 
 .pricing-editorial-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 50px;
 }
@@ -906,6 +906,80 @@ p {
     .pricing-notice {
         font-size: 0.85rem;
     }
+}
+
+@media (max-width: 768px) {
+    .full-price-list {
+        padding: 40px 25px;
+    }
+}
+
+/* --- More Packages Accordion --- */
+.more-packages-container {
+    margin-top: 80px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.more-packages-title {
+    font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    color: var(--charcoal);
+}
+
+.more-package-details {
+    border-bottom: 1px solid var(--cream-dark);
+    margin-bottom: 10px;
+}
+
+.more-package-details summary {
+    padding: 20px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--charcoal);
+    transition: color 0.3s ease;
+}
+
+.more-package-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.more-package-details summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s;
+}
+
+.more-package-details[open] summary {
+    color: var(--gold);
+}
+
+.more-package-details[open] summary::after {
+    transform: rotate(45deg);
+    color: var(--gold);
+}
+
+.more-package-content {
+    padding-bottom: 25px;
+    color: var(--charcoal);
+    opacity: 0.7;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 @media (max-width: 768px) {
