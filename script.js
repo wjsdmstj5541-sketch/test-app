@@ -14,48 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== Preloader Typing Effect ==========
-    const typingText = document.getElementById('typingText');
-    const textToType = "SUNNY STUDIO";
-    let index = 0;
-
-    function typeEffect() {
-        if (index < textToType.length) {
-            typingText.textContent += textToType.charAt(index);
-            index++;
-            setTimeout(typeEffect, 120 + Math.random() * 50);
-        } else {
-            // Typing finished - Start sophisticated transition
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                const content = preloader.querySelector('.preloader-content');
-                const flash = preloader.querySelector('.shutter-flash');
-                const hero = document.getElementById('hero');
-
-                // 1. Fade out the text content first
-                content.classList.add('fade-out');
-
-                setTimeout(() => {
-                    // 2. Trigger photographic shutter flash
-                    flash.classList.add('active');
-
-                    // 3. Simultaneously slide preloader and reveal hero
-                    setTimeout(() => {
-                        preloader.classList.add('loaded');
-                        if (hero) hero.classList.add('reveal');
-
-                        // 4. Remove from DOM after all animations finish
-                        setTimeout(() => preloader.remove(), 1200);
-                    }, 150); // Small delay to sync with flash peak
-                }, 400);
-            }, 800);
-        }
-    }
-
-    // Start typing after a short initial delay
-    window.addEventListener('load', () => {
-        setTimeout(typeEffect, 500);
-    });
 
     // ========== Hero Logic ==========
     // Hero elements are now handled by CSS and AOS.
@@ -81,6 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTop.classList.add('visible');
         } else {
             backToTop.classList.remove('visible');
+        }
+
+        // Mobile CTA bar - show after scrolling past hero
+        const mobileCTA = document.getElementById('mobileCTA');
+        if (mobileCTA) {
+            if (scrollY > 400) {
+                mobileCTA.classList.add('visible');
+            } else {
+                mobileCTA.classList.remove('visible');
+            }
         }
 
         // Active nav link
@@ -247,11 +215,97 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // escape key logic from earlier script...
+
     // ========== Set minimum date to today ==========
     const dateInput = document.getElementById('date');
     if (dateInput) {
         const today = new Date().toISOString().split('T')[0];
         dateInput.setAttribute('min', today);
     }
+
+    // ========== Pricing Carousel (Swipe + Touch) ==========
+    document.querySelectorAll('.pricing-carousel').forEach(carousel => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        let currentIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+
+        // Skip carousel functionality if there's only 1 slide
+        if (slides.length <= 1) return;
+
+        function goToSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            if (dots.length > 0) dots[currentIndex].classList.remove('active');
+            currentIndex = (index + slides.length) % slides.length;
+            slides[currentIndex].classList.add('active');
+            if (dots.length > 0) dots[currentIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        // Dot click
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(i);
+            });
+        });
+
+        // Touch events
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }, { passive: true });
+
+        // Mouse drag events
+        carousel.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            e.preventDefault();
+        });
+
+        carousel.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            const diff = startX - e.clientX;
+
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+            }
+        });
+    });
 
 });
